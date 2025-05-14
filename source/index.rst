@@ -1,17 +1,64 @@
-.. VCasT-docs documentation master file, created by
-   sphinx-quickstart on Wed May 14 19:50:25 2025.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
+VCasT Documentation
+===================
 
-VCasT documentation
-========================
+Quick Start Guide
+-----------------
 
-Add your content using ``reStructuredText`` syntax. See the
-`reStructuredText <https://www.sphinx-doc.org/en/master/usage/restructuredtext/index.html>`_
-documentation for details.
+**1. Create a virtual environment**
+
+.. code-block:: bash
+
+   python -m venv venv
+
+**2. Activate the environment**
+
+.. code-block:: bash
+
+   source venv/bin/activate
+
+**3. Install VCasT from GitHub**
+
+Full version (recommended):
+
+.. code-block:: bash
+
+   pip install "git+https://github.com/NOAA-GSL/VCasT.git@develop#egg=vcast[all]"
+
+Lite version:
+
+.. code-block:: bash
+
+   pip install "git+https://github.com/NOAA-GSL/VCasT.git@develop#egg=vcast[lite]"
+
+**4. Confirm the installation**
+
+.. code-block:: bash
+
+   which vcast
+
+**5. Clone test suite**
+
+.. code-block:: bash
+
+   git clone https://github.com/NOAA-GSL/VCasT-tests
+   mv VCasT-tests tests
+
+**6. Install pytest and run tests**
+
+.. code-block:: bash
+
+   pip install pytest
+   pytest -v tests
+
+**7. (Optional) Clone VCasT with submodules**
+
+.. code-block:: bash
+
+   git clone https://github.com/NOAA-GSL/VCasT
+   cd VCasT
+   git submodule update --init --recursive
 
 
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
-
