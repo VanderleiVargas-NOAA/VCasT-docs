@@ -1,0 +1,24 @@
+input_stat_folder: /path/to/MET/stats
+line_type: cts
+
+date_column: fcst_valid_beg
+start_date: "2022-05-01_00:00:00"
+end_date: "2022-05-08_00:00:00"
+
+string_filters:  
+  model: ["RRFS_GDAS_GF.SPP.SPPT_mem01", "RRFS_GDAS_GF.SPP.SPPT_mem02"]
+  fcst_var: ["APCP_03"]
+  fcst_thresh: [">0.0"]
+  fcst_lead: ['030000', '060000', '090000']
+
+reformat_file: true
+output_reformat_file: "/path/to/filtered_output.data"
+
+output_file: true
+stat_vars: ["fbias", "gss"]
+output_plot_file: "/path/to/output.data"
+
+aggregate: true
+group_by: ["fcst_lead"]
+output_agg_file: "/path/to/output_agg.data"
+ci: true

@@ -1,0 +1,26 @@
+
+input_stat_folder: ./stats
+line_type: cts
+date_column: "fcst_valid_beg"
+start_date: "2022-05-01_00:00:00"
+end_date: "2022-05-07_12:00:00"
+
+string_filters:
+  model: ["RRFS_GDAS_GF.SPP.SPPT_mem01", "RRFS_GDAS_GF.SPP.SPPT_mem02", "RRFS_GDAS_GF.SPP.SPPT_mem03", "RRFS_GDAS_GF.SPP.SPPT_mem04", "RRFS_GDAS_GF.SPP.SPPT_mem05",
+          "RRFS_GDAS_GF.SPP.SPPT_mem06", "RRFS_GDAS_GF.SPP.SPPT_mem07", "RRFS_GDAS_GF.SPP.SPPT_mem08", "RRFS_GDAS_GF.SPP.SPPT_mem09", "RRFS_GDAS_GF.SPP.SPPT_mem10"]
+  fcst_var: ["APCP_03"]
+  fcst_thresh: [">0.0"]
+  fcst_lead: ["00000", "030000", "060000", "090000", "120000", "150000", "180000", "210000", "240000", "270000", "300000", "330000", "360000"]
+  vx_mask: ["CONUS"]
+
+stat_vars: ["fbias"]
+
+reformat_file: false
+output_reformat_file: "./filtered_output.data"
+
+output_file: false
+output_plot_file: "./vars.data"
+
+aggregate: true
+group_by: ["model", "fcst_var", "fcst_lead"]
+output_agg_file: "./APCP_agg.data"
