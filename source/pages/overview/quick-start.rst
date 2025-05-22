@@ -21,19 +21,37 @@ Activate the environment:
 2. Install VCasT
 ----------------
 
-VCasT is hosted on GitHub and can be installed directly using `pip`.
+VCasT is hosted on GitHub and can be installed directly using pip.
 
 Full version (recommended – includes all features and dependencies):
 
 .. code-block:: bash
 
-   pip install "git+https://github.com/NOAA-GSL/VCasT.git@develop#egg=vcast[all]"
+pip install "git+https://github.com/NOAA-GSL/VCasT.git@develop#egg=vcast[all]"
 
-Lite version (fewer dependencies, specific for plotting):
+This installs the following dependencies:
+
+- `matplotlib<=3.8.4`
+- `pandas<=2.2.2`
+- `scipy<=1.13.0`
+- `numpy<=1.26.4`
+- `xarray<=2024.4.0`
+- `netCDF4<=1.6.5`
+- `zarr<=2.17.0`
+- `pygrib<=2.1.5`
+
+Lite version (minimal dependencies for plotting and basic metrics):
 
 .. code-block:: bash
 
-   pip install "git+https://github.com/NOAA-GSL/VCasT.git@develop#egg=vcast[lite]"
+pip install "git+https://github.com/NOAA-GSL/VCasT.git@develop#egg=vcast[lite]"
+
+This installs:
+
+- `matplotlib<=3.8.4`
+- `pandas<=2.2.2`
+- `scipy<=1.13.0`
+- `numpy<=1.26.4`
 
 3. Confirm the Installation
 ---------------------------
