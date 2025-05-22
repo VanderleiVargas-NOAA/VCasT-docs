@@ -27,7 +27,7 @@ Full version (recommended – includes all features and dependencies):
 
 .. code-block:: bash
 
-pip install "git+https://github.com/NOAA-GSL/VCasT.git@develop#egg=vcast[all]"
+   pip install "git+https://github.com/NOAA-GSL/VCasT.git@develop#egg=vcast[all]"
 
 This installs the following dependencies:
 
@@ -44,7 +44,7 @@ Lite version (minimal dependencies for plotting and basic metrics):
 
 .. code-block:: bash
 
-pip install "git+https://github.com/NOAA-GSL/VCasT.git@develop#egg=vcast[lite]"
+   pip install "git+https://github.com/NOAA-GSL/VCasT.git@develop#egg=vcast[lite]"
 
 This installs:
 
