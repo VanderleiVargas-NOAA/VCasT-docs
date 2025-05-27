@@ -1,0 +1,56 @@
+plot_type: line
+
+start_date: "2024-04-01_02:00:00" 
+end_date: "2024-07-30_00:00:00"    
+interval_hours: "1"                
+
+average: false                    
+scale: 1                           
+
+unique:                          
+fcst_var:                         
+
+legend_style: true                
+
+vars:
+  - rmse: "/path/to/input_stats.data"  
+  - mae: "/path/to/input_stats.data"   
+
+plot_title: "Temperature at 2m"   
+legend_title: "Model"             
+
+labels:
+  - "Model A"                   
+  - "Model B"                  
+
+line_color:
+  - "red"                       
+  - "green"                
+
+line_marker:
+  - "o"                         
+  - "x"                         
+
+line_type:
+  - "-."                        
+  - "-"                        
+
+line_width:
+  - 1                          
+  - 1                           
+
+output_filename: /path/to/output.png  
+
+x_label: "Lead Time"            
+y_label: "RMSE"                 
+
+ylim: [-0.5, 0.5]               
+xlim: [0, 36]                  
+
+grid: true                      
+
+yticks:                        
+xticks: [0,3,6,9,12,15,18,21,24,27,30,33,36] 
+
+significance: true            
+ci: ['rmse','mae']                      
