@@ -1,0 +1,28 @@
+
+plot_type: performance_diagram
+
+fcst_var: APCP_01
+
+vars:
+  - "./APCP01_agg.data"
+
+unique:
+
+plot_title: "Performance Diagram APCP_01 - May 2022"
+legend_title: "Model"
+labels:
+  - "RRFS_mem000"
+
+line_color:
+  - "blue"
+
+line_marker:
+  - "o"
+
+line_type:
+  - "-"      
+
+line_width:
+  - 0.8
+
+output_filename: stat_agg_performance.png

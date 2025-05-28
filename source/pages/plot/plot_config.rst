@@ -1,7 +1,7 @@
 VCasT Plotting YAML Configuration
 =================================
 
-This page describes the structure and fields of the YAML file used to configure the **Plotting** module in VCasT. This file controls how statistical outputs (from `.stat` files or pre-processed CSVs) are visualized through line plots and aggregated summaries.
+This page describes the structure and fields of the YAML file used to configure the **Plotting** module in VCasT. This file controls how statistical outputs are visualized through line plots, performance diagrams, or reliability diagrams.
 
 Example YAML File
 -----------------
@@ -15,63 +15,101 @@ Configuration Sections
 
 The YAML file is divided into several sections:
 
-Input Data Settings
-^^^^^^^^^^^^^^^^^^^
+General Plot Settings
+^^^^^^^^^^^^^^^^^^^^^
 
-- **input_file**:  
-  Path to the CSV file containing extracted or aggregated statistics to plot. This file should include all relevant columns required by the plot type (e.g., model, stat_name, fcst_lead, value, etc.).
+- **plot_type**:  
+  Type of plot to generate. Options include:
+  - `line`: for standard line plots
+  - `performance_diagram`: for categorical skill scores (POD vs. Success Ratio)
+  - `reliability`: for probabilistic reliability diagrams
 
-Plot Settings
-^^^^^^^^^^^^^
-
-- **x_axis**:  
-  Column to use as the x-axis (e.g., `fcst_lead`, `threshold`, `vx_mask`).
-
-- **y_axis**:  
-  Column containing the metric values to plot (e.g., `value`, `mean`).
-
-- **series_by**:  
-  Column to group different lines/series on the same plot (e.g., `model`, `fcst_var`).
-
-- **split_by**:  
-  (Optional) Column to split plots into multiple subfigures. One plot per unique value (e.g., `stat_name`, `vx_mask`).
-
-- **stat_filter**:  
-  List of statistical metrics to include (e.g., `[fbias, gss, csi]`). Used when input includes multiple metrics.
-
-Output and Style Options
-^^^^^^^^^^^^^^^^^^^^^^^^
-
-- **title**:  
-  Custom plot title. If omitted, a default title based on variables and settings is generated.
+- **plot_title**:  
+  Custom title to appear at the top of the plot.
 
 - **x_label** / **y_label**:  
-  Labels for the x and y axes. Optional; defaults are derived from the column names.
+  Axis labels. Optional; inferred from data if omitted.
 
-- **output_file**:  
-  Path to save the resulting plot. Recommended extensions are `.png`, `.pdf`, or `.svg`.
+- **output_filename**:  
+  Path where the generated plot will be saved. File types like `.png`, `.pdf`, or `.svg` are supported.
 
-- **dpi**:  
-  Image resolution in dots per inch (e.g., `150`, `300`).
+Data Settings
+^^^^^^^^^^^^^
 
-- **show_significance**:  
-  [`true`, `false`] whether to visually mark statistically significant results (requires significance column in the data).
+- **vars**:  
+  A list mapping metrics to input data paths. Each item maps a `stat_name` to a file containing the associated values.
 
-Additional Options
-^^^^^^^^^^^^^^^^^^
+  Example:
 
-- **legend**:  
-  [`true`, `false`] whether to display a legend on the plot.
+  .. code-block:: yaml
 
-- **y_lim**:  
-  `[min, max]` range to constrain the y-axis.
+     vars:
+       - rmse: "/path/to/input_stats.data"
+       - mae: "/path/to/input_stats.data"
 
-- **x_lim**:  
-  `[min, max]` range to constrain the x-axis (optional).
+- **start_date**, **end_date**:  
+  Optional date range filter in `YYYY-MM-DD_HH:MM:SS` format.
 
-- **style**:  
-  Plot style (e.g., `line`, `scatter`, `errorbar`). Determines the format used to draw series.
+- **interval_hours**:  
+  Forecast lead interval spacing (e.g., `"1"` for hourly).
+
+- **average**:  
+  [`true`, `false`] Whether to average over the x-axis dimension (e.g., across lead times).
+
+- **scale**:  
+  Numerical factor to multiply y-axis values (e.g., `100` to convert from fractional to percent).
+
+Grouping and Filtering
+^^^^^^^^^^^^^^^^^^^^^^
+
+- **unique**:  
+  Column used to distinguish separate series on the plot (e.g., `model`, `fcst_var`).
+
+- **fcst_var**:  
+  Optionally used to restrict plotting to specific forecast variables.
+
+- **ci**:  
+  List of statistical variables for which confidence intervals should be drawn (e.g., `['rmse', 'mae']`).
+
+- **significance**:  
+  [`true`, `false`] Whether to highlight statistically significant differences (requires pre-computed significance column).
+
+Appearance and Style
+^^^^^^^^^^^^^^^^^^^^
+
+- **legend_style**:  
+  [`true`, `false`] Whether to draw a legend inside or outside the plotting area.
+
+- **legend_title**:  
+  Title displayed above the legend box.
+
+- **labels**:  
+  List of labels to use in the legend for each line/series.
+
+- **line_color**:  
+  Color names or codes for each series.
+
+- **line_marker**:  
+  Marker styles for each series (e.g., `o`, `x`, `^`).
+
+- **line_type**:  
+  Line styles (e.g., `-`, `--`, `-.`).
+
+- **line_width**:  
+  Line thickness values for each series.
+
+Axis and Grid Settings
+^^^^^^^^^^^^^^^^^^^^^^
+
+- **xlim** / **ylim**:  
+  Set manual axis limits. Use a 2-element list format, e.g., `[0, 36]`.
+
+- **xticks** / **yticks**:  
+  Custom tick marks along x or y axes.
+
+- **grid**:  
+  [`true`, `false`] Whether to show grid lines in the background.
 
 ---
 
-For examples of plotting configuration files and output images, see the `examples/plotting/` directory.
+For examples of plotting configuration files and output images, see the following use cases.

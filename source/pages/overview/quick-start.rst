@@ -1,7 +1,7 @@
 Quick Start Guide
 =================
 
-This guide walks you through setting up VCasT (Verification and Forecast Evaluation Tool) in a Python environment for immediate use and testing. It assumes you have Python 3.8+ installed and access to Git.
+This guide walks you through setting up VCasT in a Python environment for immediate use and testing. It assumes you have Python 3.8+ installed and access to Git.
 
 1. Set Up a Virtual Environment
 -------------------------------
